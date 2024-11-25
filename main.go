@@ -4,12 +4,11 @@ import (
 	"fmt"
 
 	"github.com/balebbae/resaB/jsonmanager"
-
 )
 
 func main() {
     // Specify the path to your JSON file
-    inputFilePath := "data.json"
+    inputFilePath := "input.json"
 	outputFilePath := "output.json"
 
 	// Create a new JsonManager instance
@@ -24,5 +23,5 @@ func main() {
 	for _, e := range employees {
 		e.Print()
 	}
-	// Print the number of employees
+
 }

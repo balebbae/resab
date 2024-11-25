@@ -1,0 +1,72 @@
+{
+  "mon": {
+    "server": {
+      "1": "Frank",
+      "2": "Emily"
+    },
+    "host": {
+      "1": "0",
+      "2": "Henry"
+    }
+  },
+  "tue": {
+    "server": {
+      "1": "Frank",
+      "2": "Emily"
+    },
+    "host": {
+      "1": "0",
+      "2": "Henry"
+    }
+  },
+  "wed": {
+    "server": {
+      "1": "Frank",
+      "2": "Grace"
+    },
+    "host": {
+      "1": "0",
+      "2": "Irene"
+    }
+  },
+  "thu": {
+    "server": {
+      "1": "Frank",
+      "2": "Grace"
+    },
+    "host": {
+      "1": "0",
+      "2": "Henry"
+    }
+  },
+  "fri": {
+    "server": {
+      "1": "Frank",
+      "2": "Grace"
+    },
+    "host": {
+      "1": "0",
+      "2": "Henry"
+    }
+  },
+  "sat": {
+    "server": {
+      "1": "Emily",
+      "2": "Emily"
+    },
+    "host": {
+      "1": "0",
+      "2": "Henry"
+    }
+  },
+  "sun": {
+    "server": {
+      "1": "Frank",
+      "2": "Emily"
+    },
+    "host": {
+      "1": "0",
+      "2": "Henry"
+    }
+  }
+}
