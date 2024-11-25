@@ -1,6 +1,7 @@
 package main
 
 import (
+
 	"fmt"
 
 	"github.com/balebbae/resaB/jsonmanager"
@@ -12,14 +13,12 @@ func main() {
 	outputFilePath := "output.json"
 
 	// Create a new JsonManager instance
-	jsonManager := jsonmanager.New(inputFilePath, outputFilePath)
+	jm := jsonmanager.New(inputFilePath, outputFilePath)
 
 	// Call the JsonManager method
-	employees, err := jsonManager.JsonManager()
+	_, err := jm.ReadEmployees()
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-
-	fmt.Println(employees)
 }

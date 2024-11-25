@@ -16,7 +16,7 @@ type JsonManager struct {
 	OutputJsonPath string
 }
 
-func (jm *JsonManager) JsonManager() (map[string]models.Employee, error) {
+func (jm *JsonManager) ReadEmployees() (map[string]models.Employee, error) {
 	jsonFile, err := os.Open(jm.InputJsonPath)
 	if err != nil {
 		fmt.Println(err)
@@ -37,6 +37,15 @@ func (jm *JsonManager) JsonManager() (map[string]models.Employee, error) {
 		fmt.Println(err)
 		return nil, errors.New("failed to unmarshal json")
 	}
+
+	// Print pretty
+	prettyJSON, err := json.MarshalIndent(employees, "", "  ")
+	if err != nil {
+		fmt.Println(err)
+		return nil, errors.New("failed to marshal json")
+	}
+	fmt.Println(string(prettyJSON))
+
 	jsonFile.Close()
 	return employees, nil
 }
