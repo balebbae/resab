@@ -1,11 +1,11 @@
 {
   "mon": {
     "server": {
-      "1": "Frank",
-      "2": "Emily"
+      "1": "Emily",
+      "2": "Frank"
     },
     "host": {
-      "1": "0",
+      "1": null,
       "2": "Henry"
     }
   },
@@ -15,58 +15,58 @@
       "2": "Emily"
     },
     "host": {
-      "1": "0",
+      "1": null,
       "2": "Henry"
     }
   },
   "wed": {
     "server": {
-      "1": "Frank",
-      "2": "Grace"
+      "1": "Grace",
+      "2": "Frank"
     },
     "host": {
-      "1": "0",
-      "2": "Irene"
+      "1": null,
+      "2": "Henry"
     }
   },
   "thu": {
     "server": {
-      "1": "Frank",
+      "1": "Emily",
       "2": "Grace"
     },
     "host": {
-      "1": "0",
+      "1": null,
       "2": "Henry"
     }
   },
   "fri": {
     "server": {
       "1": "Frank",
-      "2": "Grace"
+      "2": "Emily"
     },
     "host": {
-      "1": "0",
-      "2": "Henry"
+      "1": null,
+      "2": "Irene"
     }
   },
   "sat": {
     "server": {
-      "1": "Emily",
+      "1": "Grace",
       "2": "Emily"
     },
     "host": {
-      "1": "0",
-      "2": "Henry"
+      "1": null,
+      "2": "Irene"
     }
   },
   "sun": {
     "server": {
       "1": "Frank",
-      "2": "Emily"
+      "2": "Grace"
     },
     "host": {
-      "1": "0",
-      "2": "Henry"
+      "1": null,
+      "2": "Irene"
     }
   }
 }
