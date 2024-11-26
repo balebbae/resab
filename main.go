@@ -1,27 +1,32 @@
 package main
 
 import (
-	"fmt"
+    "fmt"
 
-	"github.com/balebbae/resaB/jsonmanager"
+    "github.com/balebbae/resaB/jsonmanager"
+    "github.com/balebbae/resaB/scheduler"
 )
 
 func main() {
-    // Specify the path to your JSON file
-    inputFilePath := "input.json"
-	outputFilePath := "output.json"
+    // Initialize JsonManager
+    jm := jsonmanager.New("input.json", "output.json")
 
-	// Create a new JsonManager instance
-	jm := jsonmanager.New(inputFilePath, outputFilePath)
+    // Generate the schedule
+    schedule, err := scheduler.ScheduleShifts(jm)
+    if err != nil {
+        fmt.Println("Error:", err)
+        return
+    }
 
-	// Call the JsonManager method
-	employees, err := jm.ReadEmployees()
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	for _, e := range employees {
-		e.Print()
-	}
-
+    // Print the schedule
+    fmt.Println("Final Schedule:")
+    for day, positions := range schedule {
+        fmt.Printf("%s:\n", day)
+        for position, shifts := range positions {
+            fmt.Printf("  %s:\n", position)
+            for shift, employee := range shifts {
+                fmt.Printf("    Shift %s: %s\n", shift, employee)
+            }
+        }
+    }
 }

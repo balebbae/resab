@@ -8,6 +8,7 @@ import (
 	"os"
 
 	"github.com/balebbae/resaB/models"
+	"github.com/balebbae/resaB/utils"
 )
 
 type JsonManager struct {
@@ -87,4 +88,27 @@ func parseToInt(value string) int {
     result := 0
     fmt.Sscanf(value, "%d", &result)
     return result
+}
+
+
+func (jm *JsonManager) CreateHungarianMatrix() ([][]int, error) {
+	// Read employees from the JSON
+	employees, err := jm.ReadEmployees()
+	if err != nil {
+		return nil, errors.New("failed to read employees")
+	}
+
+	// Define the days and shifts
+	days := []string{"mon", "tue", "wed", "thu", "fri", "sat", "sun"}
+	shifts := []int{1, 2} // Morning (1) and Evening (2)
+
+	// Create the cost matrix
+	costMatrix := utils.CreateCostMatrix(employees, days, shifts)
+
+	fmt.Println("Cost Matrix:")
+	for _, row := range costMatrix {
+		fmt.Println(row)
+	}
+
+	return costMatrix, nil
 }
