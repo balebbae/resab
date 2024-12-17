@@ -20,7 +20,11 @@ func main() {
 }
 
 func getAvailables(c *gin.Context) {
-	availabilties := models.GetAllAvailables()
+	availabilties, err := models.GetAllAvailables()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"message": "could not fetch availables"})
+	}
+
 	c.JSON(http.StatusOK, availabilties)
 }
 
@@ -37,7 +41,12 @@ func createAvailable(c *gin.Context) {
 
 	available.UserID = 1
 	available.ID = 1
-	available.Save()
+
+	err = available.Save()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"message": "could not create available"})
+	}
+
 	fmt.Println(available)
 	c.JSON(http.StatusCreated, gin.H{"message": "Available created", "available": available})
 
