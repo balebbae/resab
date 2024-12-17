@@ -5,10 +5,12 @@ import (
 	"net/http"
 
 	"github.com/balebbae/resa-crud/models"
+	"github.com/balebbae/resa-crud/models/db"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+	db.InitDB()
 	server := gin.Default()
 	
 	server.GET("/available", getAvailables)
