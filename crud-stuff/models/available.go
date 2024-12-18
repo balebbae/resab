@@ -17,7 +17,7 @@ type Available struct {
 
 var Availables []Available = []Available{}
 
-func (a Available) Save() error {
+func (a *Available) Save() error {
 	//:Later add to tthe database
 	query := 
 	`INSERT INTO availables(priority, start_time, end_time, user_id) VALUES (?, ?, ?, ?)`
