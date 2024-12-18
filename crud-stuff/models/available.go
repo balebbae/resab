@@ -41,7 +41,7 @@ func (a Available) Save() error {
 
 func GetAllAvailables() ([]Available, error) {
 	query := "SELECT * FROM availables"
-	rows, err := db.DB.Query(query) // 
+	rows, err := db.DB.Query(query) // Query for fetching data
 	if err != nil {
 		return nil, err
 	}
