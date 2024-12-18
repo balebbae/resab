@@ -63,5 +63,15 @@ func GetAllAvailables() ([]Available, error) {
 	return availables, nil
 }
 
+func GetAvailableByID(id int64) (*Available, error){
+	query := `SELECT  * FROM availables WHERE id = ?` 
+	row := db.DB.QueryRow(query, id) // For a single row
 
+	var available Available
+	err := row.Scan(&available.ID, &available.Priority, &available.StartTime , &available.EndTime, &available.UserID)
+	if err != nil {
+		return nil, err
+	}
+	return &available, nil
+}
 

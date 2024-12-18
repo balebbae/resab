@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/balebbae/resa-crud/models"
 	"github.com/balebbae/resa-crud/models/db"
@@ -14,6 +15,7 @@ func main() {
 	server := gin.Default()
 	
 	server.GET("/available", getAvailables)
+	server.GET("/available/:id", getAvailable)
 	server.POST("/available", createAvailable)
 
 	server.Run(":8080") // localhost:8080
@@ -26,6 +28,21 @@ func getAvailables(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, availabilties)
+}
+
+func getAvailable(c *gin.Context) {
+	availableId, err := strconv.ParseInt(c.Param("id"), 10, 64)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "could not parse available id int"})
+	}
+	
+	available, err := models.GetAvailableByID(availableId)
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"message": "could not fetch available by id"})
+	}
+
+	c.JSON(http.StatusOK, available)
 }
 
 func createAvailable(c *gin.Context) {
