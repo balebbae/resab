@@ -3,7 +3,7 @@ package models
 import (
 	"time"
 
-	"github.com/balebbae/resa-crud/models/db"
+	"github.com/balebbae/resa-crud/db"
 )
 
 type Available struct {
