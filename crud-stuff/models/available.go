@@ -7,12 +7,12 @@ import (
 )
 
 type Available struct {
-	ID int64 
+	ID int64 `json:"id"`
 	Priority int32 `json:"priority" binding:"required,min=1,max=3"`
 	StartTime time.Time `json:"start_time" binding:"required"`
 	EndTime time.Time `json:"end_time" binding:"required"`
 	// CreatedAt time.Time
-	UserID int64 
+	UserID int64 `json:"user_id"`
 }
 
 var Availables []Available = []Available{}
@@ -75,3 +75,36 @@ func GetAvailableByID(id int64) (*Available, error){
 	return &available, nil
 }
 
+func (a Available) Update() error {
+	query := `
+	UPDATE availables
+	SET priority = ?, start_time = ?, end_time = ?
+	WHERE id = ?
+	`
+
+	stmt, err := db.DB.Prepare(query)
+	if err != nil {
+		return err
+	}
+	defer stmt.Close()
+
+	_, err = stmt.Exec(a.Priority, a.StartTime, a.EndTime, a.ID)
+	return err
+}
+
+func (a Available) Delete() error {
+	query := `
+	DELETE FROM availables WHERE id = ?
+	`
+
+	stmt, err := db.DB.Prepare(query)
+	if err != nil {
+		return err
+	}
+
+	defer stmt.Close()
+
+	_, err = stmt.Exec(a.ID)
+
+	return err
+}
