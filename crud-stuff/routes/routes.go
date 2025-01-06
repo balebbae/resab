@@ -7,6 +7,9 @@ func RegisterRoutes(server *gin.Engine) {
 	// Middleware
 
 	// Users
+	server.POST("/signup", signup)
+
+
 		// Employers
 		// Employees
 
@@ -17,9 +20,10 @@ func RegisterRoutes(server *gin.Engine) {
 	server.POST("/available", createAvailable)
 	server.PUT("/available/:id", updateAvailable)
 	server.DELETE("/available/:id", deleteAvailable)
-
+	
 	// Schedules
 
 	// Restaurants
+
 
 }
