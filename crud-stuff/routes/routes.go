@@ -8,7 +8,7 @@ func RegisterRoutes(server *gin.Engine) {
 
 	// Users
 	server.POST("/signup", signup)
-
+	server.POST("/login", login)
 
 		// Employers
 		// Employees
