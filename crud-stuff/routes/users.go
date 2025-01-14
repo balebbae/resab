@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/balebbae/resa-crud/models"
+	"github.com/balebbae/resa-crud/utils"
 	"github.com/gin-gonic/gin"
 )
 
@@ -36,11 +37,15 @@ func login(c *gin.Context) {
 	}
 
 	err = user.ValidateCredentials()
-
 	if err != nil {
 		c.JSON(http.StatusUnauthorized, gin.H{"message": "could not authenticate user"})
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "login successful"})
+	token, err := utils.GenerateToken(user.Email, user.ID)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"message": "could not authenticate user"})
+		return 
+	}
+	c.JSON(http.StatusOK, gin.H{"message": "login successful", "token": token})
 }
