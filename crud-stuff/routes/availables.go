@@ -6,6 +6,7 @@ import (
 	"strconv"
 
 	"github.com/balebbae/resa-crud/models"
+	"github.com/balebbae/resa-crud/utils"
 	"github.com/gin-gonic/gin"
 )
 
@@ -36,13 +37,19 @@ func getAvailable(c *gin.Context) {
 func createAvailable(c *gin.Context) {
 	token := c.Request.Header.Get("Authorization")
 	if token == "" {
-		c.JSON(http.StatusUnauthorized, gin.H{"message": "could not authorize user"})
+		c.JSON(http.StatusUnauthorized, gin.H{"message": "not authorized"})
 		return
 	}
 	
+	err := utils.VerifyToken(token)
+	if err != nil {
+		c.JSON(http.StatusUnauthorized, gin.H{"message": "not authorized"})
+		return
 
+	}
+	
 	var available models.Available
-	err := c.ShouldBindJSON(&available) // Binding request body the model of the availabiltiy
+	err = c.ShouldBindJSON(&available) // Binding request body the model of the availabiltiy
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "could not parse bad request"})

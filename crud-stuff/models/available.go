@@ -15,6 +15,14 @@ type Available struct {
 	UserID int64 `json:"user_id"`
 }
 
+// Example data to be passed as JSON
+// 
+// {
+//   "priority": 1,
+//   "start_time": "2025-01-15T09:00:00Z",
+//   "end_time": "2025-01-15T12:00:00Z"
+// }
+
 var Availables []Available = []Available{}
 
 func (a *Available) Save() error {
