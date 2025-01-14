@@ -23,7 +23,9 @@ func RegisterRoutes(server *gin.Engine) {
 	
 	// Schedules
 
-	// Restaurants
+	// Weekly Shift
 
+
+	// Restaurants
 
 }
