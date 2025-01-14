@@ -34,6 +34,13 @@ func getAvailable(c *gin.Context) {
 }
 
 func createAvailable(c *gin.Context) {
+	token := c.Request.Header.Get("Authorization")
+	if token == "" {
+		c.JSON(http.StatusUnauthorized, gin.H{"message": "could not authorize user"})
+		return
+	}
+	
+
 	var available models.Available
 	err := c.ShouldBindJSON(&available) // Binding request body the model of the availabiltiy
 

@@ -17,7 +17,7 @@ func RegisterRoutes(server *gin.Engine) {
 	// Availables
 	server.GET("/available", getAvailables)
 	server.GET("/available/:id", getAvailable)
-	server.POST("/available", createAvailable)
+	server.POST("/available", createAvailable) // protect
 	server.PUT("/available/:id", updateAvailable)
 	server.DELETE("/available/:id", deleteAvailable)
 	
